@@ -1,3 +1,4 @@
+'use strict';
 define(function() {
     class Model {
         constructor(timezone) {

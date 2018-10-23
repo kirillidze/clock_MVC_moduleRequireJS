@@ -1,3 +1,4 @@
+'use strict';
  define(function() {
      class Controller {
          constructor(model, view) {

@@ -1,10 +1,10 @@
+'use strict';
 define([
     "./model.js",
     "./view.js",
     "./controller.js"
   ],
   function(Model, View, Controller) {
-    'use strict';
 
     class Router {
       constructor(map, rootElement) {
@@ -14,7 +14,7 @@ define([
         window.addEventListener('hashchange', this.onhashchange.bind(this));
       }
 
-      onhashchange(e) {
+      onhashchange() {
         const activeHash = document.location.hash;
         // Отрисовать страницу для нового адреса
         this._route(activeHash);
@@ -46,7 +46,7 @@ define([
         runController: rootElement => {
           new Controller.Controller(
             new Model.Model(0),
-            new View.View(rootElement, 'DOM'));
+            new View.ClockDOMView(rootElement));
         }
       },
       '#clock2': {
@@ -54,7 +54,7 @@ define([
         runController: rootElement => {
           new Controller.Controller(
             new Model.Model(3),
-            new View.View(rootElement, 'DOM'));
+            new View.ClockDOMView(rootElement));
         }
       },
       '#clock3': {
@@ -62,7 +62,7 @@ define([
         runController: rootElement => {
           new Controller.Controller(
             new Model.Model(-5),
-            new View.View(rootElement, 'SVG'));
+            new View.ClockSVGView(rootElement));
         }
       }
     }, document.body).navigateTo('#clock2');
